@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import MoroccanPattern from '../components/MoroccanPattern';
 import SocialLinks from '../components/SocialLinks';
 import ControlPanel from '../components/ControlPanel';
-import { Code, Heart, Sparkles, Globe, BookOpen, Target, Star, Zap } from 'lucide-react';
+import { Code, Heart, Sparkles, Globe, BookOpen, Target, Star, Zap, Sword, Shield, Crown, Flame } from 'lucide-react';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -93,17 +93,22 @@ const Index = () => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${
       darkMode 
-        ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-moroccan-blue/20' 
-        : 'bg-gradient-to-br from-moroccan-cream via-white to-moroccan-cream'
+        ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-red-950/30' 
+        : 'bg-gradient-to-br from-moroccan-cream via-white to-gray-100'
     } moroccan-pattern relative overflow-hidden`}>
       <MoroccanPattern />
       
-      {/* نجوم متحركة في الخلفية */}
+      {/* نجوم وسيوف متحركة مستوحاة من Berserk */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-moroccan-gold rounded-full animate-twinkle"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-moroccan-blue rounded-full animate-twinkle" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-32 left-32 w-1.5 h-1.5 bg-moroccan-gold rounded-full animate-twinkle" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-20 right-10 w-1 h-1 bg-moroccan-blue rounded-full animate-twinkle" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-20 left-10 w-2 h-2 bg-red-600 rounded-full animate-twinkle"></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-gray-400 rounded-full animate-twinkle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-32 left-32 w-1.5 h-1.5 bg-red-700 rounded-full animate-twinkle" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 right-10 w-1 h-1 bg-gray-500 rounded-full animate-twinkle" style={{ animationDelay: '0.5s' }}></div>
+        
+        {/* سيوف زخرفية */}
+        <Sword className="absolute top-1/4 left-8 w-6 h-6 text-gray-600/30 rotate-45 animate-float" />
+        <Shield className="absolute bottom-1/3 right-12 w-8 h-8 text-red-800/20 animate-pulse" />
+        <Crown className="absolute top-1/3 right-1/4 w-5 h-5 text-yellow-600/40 animate-twinkle" style={{ animationDelay: '1.5s' }} />
       </div>
       
       <ControlPanel
@@ -117,55 +122,115 @@ const Index = () => {
         <div className="max-w-6xl mx-auto text-center">
           <div className={`transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
 
-            {/* القسم الرئيسي المحسّن مع تأثيرات جديدة */}
-            <div className="mb-16 relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-moroccan-gold/20 via-transparent to-moroccan-blue/20 blur-3xl animate-pulse-glow"></div>
-              <div className="relative">
-                <h1 className={`text-6xl md:text-8xl lg:text-9xl font-amiri font-bold text-gradient mb-8 ${
-                  language === 'ar' ? 'tracking-wide' : 'tracking-tight'
-                } hover:scale-105 transition-transform duration-500 cursor-default`}>
-                  {currentContent.name}
-                </h1>
-                
-                {/* تأثيرات زخرفية متحركة حول الاسم */}
-                <div className="absolute -top-6 -right-6 w-12 h-12 border-2 border-moroccan-gold/30 rounded-full animate-spin-slow"></div>
-                <div className="absolute -bottom-4 -left-8 w-8 h-8 bg-moroccan-blue/20 rounded-full animate-float"></div>
-                <Sparkles className="absolute top-2 left-1/4 w-6 h-6 text-moroccan-gold animate-twinkle" />
-                <Star className="absolute bottom-2 right-1/4 w-5 h-5 text-moroccan-blue animate-twinkle" style={{ animationDelay: '1s' }} />
-              </div>
-              
-              <div className="flex items-center justify-center space-x-4 mb-12">
-                <div className="w-20 h-1 bg-gradient-to-r from-transparent via-moroccan-gold to-transparent animate-shimmer"></div>
-                <div className="flex items-center space-x-3 px-8 py-4 bg-white/20 backdrop-blur-md rounded-full border border-moroccan-gold/40 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
-                  <Code className="w-6 h-6 text-moroccan-blue group-hover:rotate-12 transition-transform duration-300" />
-                  <span className={`text-xl md:text-2xl font-inter ${darkMode ? 'text-white' : 'text-moroccan-blue'} font-semibold`}>
-                    {currentContent.title}
-                  </span>
-                  <Zap className="w-6 h-6 text-moroccan-gold group-hover:scale-125 transition-transform duration-300" />
+            {/* رمز مركزي مستوحى من Berserk */}
+            <div className="mb-12 relative">
+              <div className="inline-block relative">
+                <div className={`w-32 h-32 mx-auto rounded-full ${
+                  darkMode 
+                    ? 'bg-gradient-to-br from-red-900 via-gray-800 to-black' 
+                    : 'bg-gradient-to-br from-gray-700 via-gray-600 to-red-800'
+                } shadow-2xl flex items-center justify-center border-4 ${
+                  darkMode ? 'border-red-700/50' : 'border-gray-600/50'
+                } hover:scale-110 transition-all duration-500`}>
+                  <div className="relative">
+                    <Sword className={`w-16 h-16 ${
+                      darkMode ? 'text-red-400' : 'text-red-600'
+                    } drop-shadow-lg animate-pulse`} />
+                    <Flame className="w-6 h-6 text-orange-500 absolute -top-2 -right-2 animate-twinkle" />
+                  </div>
                 </div>
-                <div className="w-20 h-1 bg-gradient-to-r from-transparent via-moroccan-gold to-transparent animate-shimmer" style={{ animationDelay: '1s' }}></div>
+                
+                {/* تأثيرات زخرفية */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 border-2 border-red-600/40 rounded-full animate-spin-slow"></div>
+                <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-gray-700/20 rounded-full animate-pulse"></div>
+                <Shield className="absolute top-2 left-1/4 w-6 h-6 text-gray-600 animate-float" />
+                <Crown className="absolute bottom-2 right-1/4 w-5 h-5 text-yellow-600 animate-twinkle" style={{ animationDelay: '1s' }} />
               </div>
             </div>
 
-            {/* بطاقة الوصف المحسّنة مع تأثيرات جديدة */}
+            {/* القسم الرئيسي المحسّن مع تأثيرات Berserk */}
+            <div className="mb-16 relative">
+              <div className={`absolute -inset-4 ${
+                darkMode 
+                  ? 'bg-gradient-to-r from-red-900/20 via-transparent to-gray-800/20' 
+                  : 'bg-gradient-to-r from-red-700/20 via-transparent to-gray-600/20'
+              } blur-3xl animate-pulse-glow`}></div>
+              <div className="relative">
+                <h1 className={`text-6xl md:text-8xl lg:text-9xl font-amiri font-bold mb-8 ${
+                  language === 'ar' ? 'tracking-wide' : 'tracking-tight'
+                } hover:scale-105 transition-transform duration-500 cursor-default ${
+                  darkMode 
+                    ? 'bg-gradient-to-r from-red-400 via-gray-300 to-red-500' 
+                    : 'bg-gradient-to-r from-red-700 via-gray-700 to-red-800'
+                } bg-clip-text text-transparent`}>
+                  {currentContent.name}
+                </h1>
+                
+                {/* تأثيرات زخرفية متحركة مستوحاة من Berserk */}
+                <div className="absolute -top-6 -right-6 w-12 h-12 border-2 border-red-600/30 rounded-full animate-spin-slow"></div>
+                <div className="absolute -bottom-4 -left-8 w-8 h-8 bg-gray-700/20 rounded-full animate-float"></div>
+                <Sword className="absolute top-2 left-1/4 w-6 h-6 text-red-600 animate-twinkle rotate-12" />
+                <Shield className="absolute bottom-2 right-1/4 w-5 h-5 text-gray-600 animate-twinkle" style={{ animationDelay: '1s' }} />
+              </div>
+              
+              <div className="flex items-center justify-center space-x-4 mb-12">
+                <div className={`w-20 h-1 ${
+                  darkMode 
+                    ? 'bg-gradient-to-r from-transparent via-red-600 to-transparent' 
+                    : 'bg-gradient-to-r from-transparent via-red-700 to-transparent'
+                } animate-shimmer`}></div>
+                <div className={`flex items-center space-x-3 px-8 py-4 ${
+                  darkMode 
+                    ? 'bg-gray-800/90 border-red-600/40' 
+                    : 'bg-white/90 border-red-700/40'
+                } backdrop-blur-md rounded-full border shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group`}>
+                  <Code className={`w-6 h-6 ${
+                    darkMode ? 'text-red-400' : 'text-red-700'
+                  } group-hover:rotate-12 transition-transform duration-300`} />
+                  <span className={`text-xl md:text-2xl font-inter ${
+                    darkMode ? 'text-white' : 'text-gray-800'
+                  } font-semibold`}>
+                    {currentContent.title}
+                  </span>
+                  <Flame className={`w-6 h-6 ${
+                    darkMode ? 'text-orange-400' : 'text-orange-600'
+                  } group-hover:scale-125 transition-transform duration-300`} />
+                </div>
+                <div className={`w-20 h-1 ${
+                  darkMode 
+                    ? 'bg-gradient-to-r from-transparent via-red-600 to-transparent' 
+                    : 'bg-gradient-to-r from-transparent via-red-700 to-transparent'
+                } animate-shimmer`} style={{ animationDelay: '1s' }}></div>
+              </div>
+            </div>
+
+            {/* بطاقة الوصف مع طابع Berserk */}
             <div className={`${
               darkMode 
-                ? 'bg-gray-800/95 border-moroccan-gold/30' 
-                : 'bg-white/95 border-moroccan-gold/20'
+                ? 'bg-gray-800/95 border-red-700/30' 
+                : 'bg-white/95 border-red-700/20'
             } backdrop-blur-md rounded-3xl p-10 md:p-16 shadow-2xl border mb-16 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 group relative overflow-hidden`}>
               
               {/* تأثير الخلفية المتحركة */}
-              <div className="absolute inset-0 bg-gradient-to-r from-moroccan-gold/5 via-transparent to-moroccan-blue/5 transform -skew-x-12 translate-x-full group-hover:translate-x-[-100%] transition-transform duration-700"></div>
+              <div className={`absolute inset-0 ${
+                darkMode 
+                  ? 'bg-gradient-to-r from-red-900/10 via-transparent to-gray-800/10' 
+                  : 'bg-gradient-to-r from-red-700/5 via-transparent to-gray-600/5'
+              } transform -skew-x-12 translate-x-full group-hover:translate-x-[-100%] transition-transform duration-700`}></div>
               
               <div className="relative z-10">
                 <div className="flex items-center justify-center mb-10">
-                  <Globe className="w-10 h-10 text-moroccan-gold mr-4 animate-float" />
+                  <Globe className={`w-10 h-10 ${
+                    darkMode ? 'text-red-400' : 'text-red-700'
+                  } mr-4 animate-float`} />
                   <h2 className={`text-4xl md:text-5xl font-amiri font-bold ${
-                    darkMode ? 'text-white' : 'text-moroccan-blue'
+                    darkMode ? 'text-white' : 'text-gray-800'
                   } hover:text-gradient transition-all duration-300`}>
                     {currentContent.whoAmI}
                   </h2>
-                  <BookOpen className="w-10 h-10 text-moroccan-gold ml-4 animate-float" style={{ animationDelay: '0.5s' }} />
+                  <BookOpen className={`w-10 h-10 ${
+                    darkMode ? 'text-red-400' : 'text-red-700'
+                  } ml-4 animate-float`} style={{ animationDelay: '0.5s' }} />
                 </div>
                 
                 <p className={`text-xl md:text-2xl lg:text-3xl font-inter ${
@@ -176,19 +241,21 @@ const Index = () => {
                   {currentContent.description}
                 </p>
                 
-                {/* الشبكة المحسّنة للمهارات */}
+                {/* الشبكة المحسّنة للمهارات مع طابع Berserk */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                   <div className={`${
                     darkMode 
-                      ? 'bg-moroccan-blue/30 hover:bg-moroccan-blue/40 border-moroccan-blue/20' 
-                      : 'bg-moroccan-blue/15 hover:bg-moroccan-blue/25 border-moroccan-blue/10'
+                      ? 'bg-red-900/30 hover:bg-red-900/40 border-red-800/20' 
+                      : 'bg-red-700/15 hover:bg-red-700/25 border-red-700/10'
                   } rounded-3xl p-8 lg:p-10 transition-all duration-500 hover:scale-110 hover:shadow-2xl group border backdrop-blur-sm hover:-translate-y-4`}>
                     <div className="relative mb-6">
-                      <Code className="w-16 h-16 text-moroccan-blue mx-auto group-hover:scale-125 group-hover:rotate-12 transition-all duration-500" />
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-moroccan-gold/40 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                      <Code className={`w-16 h-16 ${
+                        darkMode ? 'text-red-400' : 'text-red-700'
+                      } mx-auto group-hover:scale-125 group-hover:rotate-12 transition-all duration-500`} />
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-orange-500/40 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
                     </div>
                     <h3 className={`font-amiri font-bold ${
-                      darkMode ? 'text-white' : 'text-moroccan-blue'
+                      darkMode ? 'text-white' : 'text-gray-800'
                     } mb-4 text-xl lg:text-2xl group-hover:text-gradient transition-all duration-300`}>
                       {currentContent.skills.title}
                     </h3>
@@ -201,15 +268,17 @@ const Index = () => {
                   
                   <div className={`${
                     darkMode 
-                      ? 'bg-moroccan-gold/30 hover:bg-moroccan-gold/40 border-moroccan-gold/20' 
-                      : 'bg-moroccan-gold/15 hover:bg-moroccan-gold/25 border-moroccan-gold/10'
+                      ? 'bg-gray-800/30 hover:bg-gray-800/40 border-gray-700/20' 
+                      : 'bg-gray-600/15 hover:bg-gray-600/25 border-gray-600/10'
                   } rounded-3xl p-8 lg:p-10 transition-all duration-500 hover:scale-110 hover:shadow-2xl group border backdrop-blur-sm hover:-translate-y-4`} style={{ animationDelay: '0.2s' }}>
                     <div className="relative mb-6">
-                      <Heart className="w-16 h-16 text-moroccan-gold mx-auto group-hover:scale-125 group-hover:rotate-12 transition-all duration-500" />
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-moroccan-blue/40 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                      <Heart className={`w-16 h-16 ${
+                        darkMode ? 'text-red-400' : 'text-red-700'
+                      } mx-auto group-hover:scale-125 group-hover:rotate-12 transition-all duration-500`} />
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-600/40 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
                     </div>
                     <h3 className={`font-amiri font-bold ${
-                      darkMode ? 'text-white' : 'text-moroccan-blue'
+                      darkMode ? 'text-white' : 'text-gray-800'
                     } mb-4 text-xl lg:text-2xl group-hover:text-gradient transition-all duration-300`}>
                       {currentContent.passion.title}
                     </h3>
@@ -222,15 +291,17 @@ const Index = () => {
                   
                   <div className={`${
                     darkMode 
-                      ? 'bg-moroccan-blue/30 hover:bg-moroccan-blue/40 border-moroccan-blue/20' 
-                      : 'bg-moroccan-blue/15 hover:bg-moroccan-blue/25 border-moroccan-blue/10'
+                      ? 'bg-yellow-900/30 hover:bg-yellow-900/40 border-yellow-800/20' 
+                      : 'bg-yellow-700/15 hover:bg-yellow-700/25 border-yellow-700/10'
                   } rounded-3xl p-8 lg:p-10 transition-all duration-500 hover:scale-110 hover:shadow-2xl group border backdrop-blur-sm hover:-translate-y-4`} style={{ animationDelay: '0.4s' }}>
                     <div className="relative mb-6">
-                      <Target className="w-16 h-16 text-moroccan-blue mx-auto group-hover:scale-125 group-hover:rotate-12 transition-all duration-500" />
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-moroccan-gold/40 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                      <Target className={`w-16 h-16 ${
+                        darkMode ? 'text-yellow-400' : 'text-yellow-700'
+                      } mx-auto group-hover:scale-125 group-hover:rotate-12 transition-all duration-500`} />
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-orange-500/40 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
                     </div>
                     <h3 className={`font-amiri font-bold ${
-                      darkMode ? 'text-white' : 'text-moroccan-blue'
+                      darkMode ? 'text-white' : 'text-gray-800'
                     } mb-4 text-xl lg:text-2xl group-hover:text-gradient transition-all duration-300`}>
                       {currentContent.goal.title}
                     </h3>
@@ -244,8 +315,12 @@ const Index = () => {
               </div>
             </div>
 
-            {/* قسم التواصل المحسّن مع تأثيرات جديدة */}
-            <div className="bg-gradient-to-r from-moroccan-blue via-moroccan-blue to-moroccan-gold rounded-3xl p-12 lg:p-16 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden group">
+            {/* قسم التواصل مع طابع Berserk */}
+            <div className={`${
+              darkMode 
+                ? 'bg-gradient-to-r from-red-900 via-gray-800 to-black' 
+                : 'bg-gradient-to-r from-red-800 via-gray-700 to-red-900'
+            } rounded-3xl p-12 lg:p-16 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden group`}>
               {/* تأثير الخلفية المتحركة */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               
@@ -260,27 +335,35 @@ const Index = () => {
                   <SocialLinks />
                 </div>
                 
-                {/* تأثيرات زخرفية محسّنة */}
+                {/* تأثيرات زخرفية مستوحاة من Berserk */}
                 <div className="absolute -top-6 -left-6 w-8 h-8 border-2 border-white/30 rounded-full animate-ping"></div>
-                <div className="absolute -bottom-6 -right-6 w-10 h-10 border-2 border-moroccan-gold/50 rounded-full animate-pulse"></div>
-                <Sparkles className="absolute top-4 right-4 w-8 h-8 text-white/60 animate-twinkle" />
-                <Star className="absolute bottom-4 left-4 w-6 h-6 text-moroccan-gold/80 animate-twinkle" style={{ animationDelay: '1.5s' }} />
+                <div className="absolute -bottom-6 -right-6 w-10 h-10 border-2 border-red-500/50 rounded-full animate-pulse"></div>
+                <Sword className="absolute top-4 right-4 w-8 h-8 text-white/60 animate-twinkle rotate-45" />
+                <Crown className="absolute bottom-4 left-4 w-6 h-6 text-yellow-500/80 animate-twinkle" style={{ animationDelay: '1.5s' }} />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* تأثيرات الخلفية المحسّنة */}
+      {/* تأثيرات الخلفية المحسّنة مع طابع Berserk */}
       <div className={`absolute bottom-0 left-0 right-0 h-48 ${
         darkMode 
-          ? 'bg-gradient-to-t from-gray-900/60 to-transparent' 
-          : 'bg-gradient-to-t from-moroccan-blue/15 to-transparent'
+          ? 'bg-gradient-to-t from-red-950/60 to-transparent' 
+          : 'bg-gradient-to-t from-red-900/15 to-transparent'
       } pointer-events-none`}></div>
       
       {/* خطوط جانبية متحركة */}
-      <div className="absolute top-1/4 left-0 w-2 h-40 bg-gradient-to-b from-moroccan-gold to-transparent opacity-40 animate-pulse"></div>
-      <div className="absolute top-1/2 right-0 w-2 h-32 bg-gradient-to-b from-moroccan-blue to-transparent opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className={`absolute top-1/4 left-0 w-2 h-40 ${
+        darkMode 
+          ? 'bg-gradient-to-b from-red-600 to-transparent' 
+          : 'bg-gradient-to-b from-red-700 to-transparent'
+      } opacity-40 animate-pulse`}></div>
+      <div className={`absolute top-1/2 right-0 w-2 h-32 ${
+        darkMode 
+          ? 'bg-gradient-to-b from-gray-600 to-transparent' 
+          : 'bg-gradient-to-b from-gray-700 to-transparent'
+      } opacity-40 animate-pulse`} style={{ animationDelay: '1s' }}></div>
     </div>
   );
 };

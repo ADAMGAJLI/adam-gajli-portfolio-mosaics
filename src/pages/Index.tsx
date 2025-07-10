@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import MoroccanPattern from '../components/MoroccanPattern';
 import SocialLinks from '../components/SocialLinks';
@@ -117,6 +116,24 @@ const Index = () => {
         <div className="max-w-6xl mx-auto text-center">
           <div className={`transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             
+            {/* الصورة الشخصية */}
+            <div className="mb-12">
+              <div className="relative inline-block">
+                <div className="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 border-4 border-moroccan-gold/50">
+                  <img 
+                    src="/lovable-uploads/3ca87504-278d-4432-85db-9999d1a4d402.png" 
+                    alt="Adam Gajli"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* تأثيرات زخرفية حول الصورة */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 border-2 border-moroccan-gold/40 rounded-full animate-spin-slow"></div>
+                <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-moroccan-blue/20 rounded-full animate-pulse"></div>
+                <Sparkles className="absolute top-0 left-1/4 w-6 h-6 text-moroccan-gold animate-twinkle" />
+                <Star className="absolute bottom-0 right-1/4 w-5 h-5 text-moroccan-blue animate-twinkle" style={{ animationDelay: '1s' }} />
+              </div>
+            </div>
+
             {/* القسم الرئيسي المحسّن مع تأثيرات جديدة */}
             <div className="mb-16 relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-moroccan-gold/20 via-transparent to-moroccan-blue/20 blur-3xl animate-pulse-glow"></div>
